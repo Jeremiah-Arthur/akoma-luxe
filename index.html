@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akoma Luxe — Pure Ghana. Crafted Rare.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:     #FDF6EC;
+  --cream-mid: #F5EBD6;
+  --cream-deep:#EDD9BC;
+  --espresso:  #2C1A0E;
+  --brown-mid: #6B4226;
+  --brown-lt:  #9B6647;
+  --gold:      #C9A055;
+  --gold-lt:   #E2C07A;
+  --gold-pale: #F0DFB5;
+  --sage:      #7A9E82;
+  --sage-lt:   #A8C4A4;
+  --terracotta:#C47B5A;
+  --terra-lt:  #E2A882;
+  --white:     #FFFDF8;
+  --text-body: #4A2E1A;
+  --text-muted:#8B6A52;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--espresso);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ───── CURSOR ───── */
+.cursor { position:fixed; width:8px; height:8px; background:var(--gold); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:transform 0.08s; }
+.cursor-ring { position:fixed; width:32px; height:32px; border:1.5px solid var(--gold); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:all 0.15s ease; opacity:0.7; }
+
+/* ───── NAV ───── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  padding:22px 56px;
+  display:flex; justify-content:space-between; align-items:center;
+  background:rgba(253,246,236,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(201,160,85,0.15);
+  transition:all 0.4s ease;
+}
+.nav-logo { font-family:'Playfair Display',serif; font-size:21px; font-weight:400; letter-spacing:0.25em; color:var(--espresso); text-decoration:none; text-transform:uppercase; }
+.nav-logo span { color:var(--gold); }
+.nav-links { display:flex; gap:40px; list-style:none; }
+.nav-links a { font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--text-muted); text-decoration:none; font-weight:400; transition:color 0.3s; }
+.nav-links a:hover { color:var(--gold); }
+.nav-cta { font-size:9px; letter-spacing:0.25em; text-transform:uppercase; background:var(--espresso); color:var(--cream); padding:11px 28px; text-decoration:none; font-weight:400; transition:all 0.3s; }
+.nav-cta:hover { background:var(--gold); }
+
+/* ───── HERO ───── */
+.hero {
+  min-height:100vh; position:relative;
+  display:flex; align-items:center;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse 50% 70% at 80% 50%, rgba(201,160,85,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 10% 30%, rgba(122,158,130,0.08) 0%, transparent 55%),
+    linear-gradient(165deg, #FDF6EC 0%, #F5EBD6 55%, #EDD9BC 100%);
+}
+
+.hero-bg-text {
+  position:absolute; right:-60px; top:50%; transform:translateY(-50%);
+  font-family:'Playfair Display',serif; font-size:340px; font-weight:400;
+  color:rgba(201,160,85,0.07); line-height:1; pointer-events:none; user-select:none;
+  font-style:italic; white-space:nowrap;
+}
+
+.hero-botanical {
+  position:absolute; left:0; bottom:0; top:0; width:45%;
+  background:
+    radial-gradient(ellipse 60% 80% at 30% 60%, rgba(122,158,130,0.12) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='400' height='600' viewBox='0 0 400 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='200' cy='300' rx='160' ry='260' fill='%23EDD9BC' opacity='0.4'/%3E%3Ccircle cx='200' cy='300' r='120' fill='%23E2C07A' opacity='0.08'/%3E%3C/svg%3E") center/cover no-repeat;
+}
+
+.hero-circle {
+  position:absolute; left:8%; top:50%; transform:translateY(-50%);
+  width:380px; height:380px; border-radius:50%;
+  background:linear-gradient(135deg, var(--cream-deep) 0%, var(--cream-mid) 100%);
+  border:1px solid rgba(201,160,85,0.2);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 30px 80px rgba(44,26,14,0.1), inset 0 0 60px rgba(201,160,85,0.06);
+  animation:floatCircle 6s ease-in-out infinite;
+}
+
+@keyframes floatCircle {
+  0%,100% { transform:translateY(-50%) translateY(0); }
+  50% { transform:translateY(-50%) translateY(-12px); }
+}
+
+.hero-circle-inner { text-align:center; padding:40px; }
+.hero-circle-icon { font-size:80px; margin-bottom:16px; display:block; line-height:1; filter:drop-shadow(0 8px 24px rgba(201,160,85,0.25)); }
+.hero-circle-badge { font-family:'Playfair Display',serif; font-size:13px; letter-spacing:0.2em; color:var(--brown-mid); text-transform:uppercase; }
+.hero-circle-sub { font-size:9px; letter-spacing:0.3em; color:var(--text-muted); margin-top:6px; text-transform:uppercase; }
+
+.hero-content {
+  position:relative; z-index:2; margin-left:48%;
+  padding:0 56px 0 0; max-width:600px;
+  animation:slideInRight 1.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+@keyframes slideInRight { from{opacity:0;transform:translateX(30px);} to{opacity:1;transform:translateX(0);} }
+
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(201,160,85,0.12); border:1px solid rgba(201,160,85,0.3);
+  padding:6px 16px; margin-bottom:28px;
+  font-size:9px; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
+  animation:slideInRight 1.2s 0.1s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-badge::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--gold); }
+
+.hero-title {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(52px,7vw,88px);
+  font-weight:400; line-height:1.0;
+  color:var(--espresso); margin-bottom:24px;
+  animation:slideInRight 1.2s 0.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-title em { font-style:italic; color:var(--gold); display:block; }
+
+.hero-sub {
+  font-size:13px; line-height:1.9; color:var(--text-muted);
+  margin-bottom:44px; max-width:400px;
+  animation:slideInRight 1.2s 0.3s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.hero-actions {
+  display:flex; gap:20px; align-items:center;
+  animation:slideInRight 1.2s 0.4s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.btn-warm { background:var(--gold); color:var(--espresso); padding:16px 44px; font-size:9px; letter-spacing:0.3em; text-transform:uppercase; text-decoration:none; font-weight:500; font-family:'Jost',sans-serif; transition:all 0.35s ease; border:none; cursor:pointer; }
+.btn-warm:hover { background:var(--espresso); color:var(--cream); transform:translateY(-2px); }
+.btn-outline { color:var(--espresso); font-size:9px; letter-spacing:0.25em; text-transform:uppercase; text-decoration:none; font-weight:400; border-bottom:1px solid var(--gold); padding-bottom:3px; transition:all 0.3s; }
+.btn-outline:hover { color:var(--gold); }
+
+.hero-trust {
+  position:absolute; bottom:40px; left:8%; right:0;
+  display:flex; gap:56px; align-items:center;
+  animation:fadeUp 1.2s 0.6s both;
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
+
+.trust-item { display:flex; flex-direction:column; gap:4px; }
+.trust-num { font-family:'Playfair Display',serif; font-size:30px; font-weight:400; color:var(--espresso); line-height:1; }
+.trust-label { font-size:8px; letter-spacing:0.3em; text-transform:uppercase; color:var(--text-muted); }
+
+.trust-divider { width:1px; height:36px; background:rgba(201,160,85,0.3); }
+
+/* ───── MARQUEE ───── */
+.marquee-band {
+  background:var(--espresso); padding:15px 0; overflow:hidden;
+}
+.marquee-track { display:flex; animation:marquee 20s linear infinite; white-space:nowrap; }
+.marquee-item { flex-shrink:0; display:flex; align-items:center; gap:28px; padding:0 28px; font-size:9px; letter-spacing:0.4em; text-transform:uppercase; color:var(--gold-pale); font-weight:400; }
+.marquee-dot { width:3px; height:3px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+@keyframes marquee { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+/* ───── SECTION COMMON ───── */
+section { padding:110px 0; }
+.container { max-width:1180px; margin:0 auto; padding:0 56px; }
+.sec-label { font-size:8px; letter-spacing:0.5em; text-transform:uppercase; color:var(--terracotta); margin-bottom:16px; display:flex; align-items:center; gap:14px; }
+.sec-label::before { content:''; width:36px; height:1px; background:var(--terracotta); flex-shrink:0; }
+.sec-title { font-family:'Playfair Display',serif; font-size:clamp(34px,4.5vw,56px); font-weight:400; line-height:1.1; color:var(--espresso); }
+.sec-title em { font-style:italic; color:var(--gold); }
+.gold-line { width:48px; height:2px; background:linear-gradient(to right,var(--gold),var(--gold-lt)); margin:20px 0 28px; }
+
+/* ───── SCENT STORY ───── */
+.scent { background:var(--white); }
+
+.scent-grid { display:grid; grid-template-columns:1fr 1fr; gap:88px; align-items:center; }
+
+.scent-visual { position:relative; }
+.scent-wheel {
+  width:320px; height:320px; border-radius:50%; margin:0 auto;
+  background:conic-gradient(
+    var(--gold-pale) 0deg 60deg,
+    var(--sage-lt) 60deg 120deg,
+    var(--terra-lt) 120deg 180deg,
+    var(--cream-deep) 180deg 240deg,
+    var(--gold-lt) 240deg 300deg,
+    var(--sage) 300deg 360deg
+  );
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 20px 60px rgba(201,160,85,0.2);
+  position:relative; animation:rotateWheel 24s linear infinite;
+}
+@keyframes rotateWheel { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+
+.scent-wheel-inner {
+  width:180px; height:180px; border-radius:50%;
+  background:var(--white);
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; padding:20px;
+  animation:rotateWheelReverse 24s linear infinite;
+  box-shadow:inset 0 0 20px rgba(201,160,85,0.1);
+}
+@keyframes rotateWheelReverse { from{transform:rotate(0deg);} to{transform:rotate(-360deg);} }
+
+.scent-wheel-inner .icon { font-size:32px; display:block; margin-bottom:8px; }
+.scent-wheel-inner .label { font-family:'Playfair Display',serif; font-size:11px; color:var(--espresso); line-height:1.4; }
+
+.scent-notes { margin-top:40px; display:flex; flex-direction:column; gap:0; }
+.note-row {
+  display:flex; align-items:center; gap:16px; padding:14px 0;
+  border-bottom:1px solid rgba(201,160,85,0.12);
+}
+.note-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.note-dot.top { background:var(--sage); }
+.note-dot.heart { background:var(--gold); }
+.note-dot.base { background:var(--espresso); }
+.note-label { font-size:8px; letter-spacing:0.3em; text-transform:uppercase; color:var(--text-muted); width:60px; }
+.note-name { font-family:'Playfair Display',serif; font-size:14px; color:var(--espresso); }
+.note-desc { font-size:11px; color:var(--text-muted); margin-left:auto; font-style:italic; }
+
+.scent-text p { font-size:14px; line-height:2; color:var(--text-muted); margin-bottom:20px; }
+.scent-text p strong { color:var(--espresso); font-weight:500; }
+
+.ifra-badge {
+  display:inline-flex; align-items:center; gap:10px;
+  background:rgba(122,158,130,0.08); border:1px solid rgba(122,158,130,0.3);
+  padding:12px 20px; margin-top:24px;
+  font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--sage);
+}
+.ifra-badge .check { font-size:14px; }
+
+/* ───── PRODUCTS ───── */
+.products { background:var(--cream-mid); }
+.products-intro { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:64px; }
+
+.products-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+
+.product-card {
+  background:var(--white); position:relative; overflow:hidden;
+  transition:all 0.5s cubic-bezier(0.16,1,0.3,1);
+  border:1px solid rgba(201,160,85,0.1);
+}
+.product-card:hover { transform:translateY(-6px); box-shadow:0 24px 60px rgba(44,26,14,0.1); border-color:rgba(201,160,85,0.3); }
+
+.product-img {
+  height:320px; position:relative; overflow:hidden;
+  background:linear-gradient(145deg, var(--cream) 0%, var(--cream-deep) 100%);
+  display:flex; align-items:center; justify-content:center;
+}
+.product-img::after {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 60% 60% at 50% 40%, rgba(201,160,85,0.08) 0%, transparent 60%);
+  transition:opacity 0.5s; opacity:0;
+}
+.product-card:hover .product-img::after { opacity:1; }
+
+.product-emoji { font-size:80px; filter:drop-shadow(0 12px 40px rgba(201,160,85,0.2)); transition:transform 0.5s ease; }
+.product-card:hover .product-emoji { transform:scale(1.06) translateY(-5px); }
+
+.product-chip {
+  position:absolute; top:18px; left:18px;
+  font-size:7px; letter-spacing:0.35em; text-transform:uppercase;
+  color:var(--terracotta); background:rgba(253,246,236,0.9);
+  border:1px solid rgba(196,123,90,0.25); padding:5px 12px;
+}
+
+.product-body { padding:28px; }
+.product-name { font-family:'Playfair Display',serif; font-size:22px; font-weight:400; color:var(--espresso); margin-bottom:8px; }
+.product-desc { font-size:11px; line-height:1.8; color:var(--text-muted); margin-bottom:20px; }
+
+.product-footer { display:flex; justify-content:space-between; align-items:center; }
+.product-price { font-family:'Playfair Display',serif; font-size:26px; color:var(--gold); }
+.product-price small { font-size:11px; color:var(--text-muted); font-family:'Jost',sans-serif; }
+
+.product-btn { font-size:8px; letter-spacing:0.25em; text-transform:uppercase; color:var(--espresso); border:1px solid rgba(44,26,14,0.2); padding:10px 20px; text-decoration:none; transition:all 0.3s; font-family:'Jost',sans-serif; font-weight:400; background:none; cursor:pointer; }
+.product-btn:hover { background:var(--gold); border-color:var(--gold); color:var(--espresso); }
+
+/* ───── INGREDIENTS ───── */
+.ingredients { background:var(--cream); }
+.ingredients-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; margin-top:64px; }
+
+.ingr-card {
+  padding:36px 28px; background:var(--white);
+  border:1px solid rgba(201,160,85,0.1);
+  text-align:center; transition:all 0.4s ease;
+  position:relative; overflow:hidden;
+}
+.ingr-card::before {
+  content:''; position:absolute; bottom:0; left:0; right:0;
+  height:3px; background:linear-gradient(to right, var(--gold), var(--terracotta));
+  transform:scaleX(0); transform-origin:left; transition:transform 0.4s ease;
+}
+.ingr-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(44,26,14,0.07); }
+.ingr-card:hover::before { transform:scaleX(1); }
+
+.ingr-icon { font-size:44px; margin-bottom:16px; display:block; transition:transform 0.4s; }
+.ingr-card:hover .ingr-icon { transform:scale(1.1); }
+.ingr-name { font-family:'Playfair Display',serif; font-size:18px; color:var(--espresso); margin-bottom:10px; }
+.ingr-desc { font-size:11px; line-height:1.8; color:var(--text-muted); }
+
+/* ───── ABOUT SPLIT ───── */
+.about { background:var(--espresso); }
+.about-grid { display:grid; grid-template-columns:1fr 1fr; }
+
+.about-left {
+  padding:80px; display:flex; flex-direction:column; justify-content:center;
+}
+.about .sec-label { color:var(--gold-lt); }
+.about .sec-label::before { background:var(--gold-lt); }
+.about .sec-title { color:var(--cream); }
+
+.about-left p { font-size:14px; line-height:2; color:rgba(253,246,236,0.6); margin-bottom:20px; }
+.about-left p strong { color:var(--gold-lt); font-weight:500; }
+
+.about-values { display:flex; flex-direction:column; gap:0; margin-top:40px; }
+.val-item { display:flex; gap:20px; padding:18px 0; border-bottom:1px solid rgba(201,160,85,0.1); }
+.val-num { font-family:'Playfair Display',serif; font-size:32px; color:rgba(201,160,85,0.2); line-height:1; width:36px; flex-shrink:0; }
+.val-content strong { display:block; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--cream); margin-bottom:5px; font-weight:500; }
+.val-content span { font-size:12px; color:rgba(253,246,236,0.55); line-height:1.7; }
+
+.about-right {
+  background:linear-gradient(145deg, #3D2415 0%, #2C1A0E 100%);
+  padding:80px; display:flex; flex-direction:column; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.about-right::before {
+  content:''; position:absolute; top:-80px; right:-80px;
+  width:300px; height:300px; border-radius:50%;
+  background:radial-gradient(circle, rgba(201,160,85,0.08) 0%, transparent 70%);
+}
+
+.testimonial {
+  position:relative; z-index:1;
+  font-family:'Playfair Display',serif;
+  font-size:22px; font-weight:400; font-style:italic;
+  color:var(--gold-pale); line-height:1.6; margin-bottom:32px;
+}
+.testimonial::before { content:'\201C'; font-size:80px; color:rgba(201,160,85,0.15); line-height:0.5; display:block; margin-bottom:16px; }
+
+.testimonial-by { font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:rgba(253,246,236,0.4); }
+
+.about-stats { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:56px; padding-top:48px; border-top:1px solid rgba(201,160,85,0.12); }
+.stat-box { text-align:center; }
+.stat-box .n { font-family:'Playfair Display',serif; font-size:44px; font-weight:400; color:var(--gold); line-height:1; }
+.stat-box .l { font-size:8px; letter-spacing:0.3em; text-transform:uppercase; color:rgba(253,246,236,0.4); margin-top:8px; }
+
+/* ───── COMPLIANCE ───── */
+.compliance { background:var(--cream-mid); }
+.compliance-inner { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+.compliance-badges { display:flex; flex-direction:column; gap:16px; }
+
+.badge-card {
+  display:flex; align-items:center; gap:20px; padding:22px 28px;
+  background:var(--white); border:1px solid rgba(201,160,85,0.15);
+  transition:all 0.35s ease;
+}
+.badge-card:hover { border-color:var(--gold); transform:translateX(4px); }
+
+.badge-icon { font-size:28px; flex-shrink:0; }
+.badge-title { font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:0.15em; color:var(--espresso); margin-bottom:4px; }
+.badge-desc { font-size:11px; color:var(--text-muted); line-height:1.6; }
+
+/* ───── CONTACT ───── */
+.contact { background:var(--white); }
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; }
+
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.form-group { display:flex; flex-direction:column; gap:8px; margin-bottom:20px; }
+.form-group label { font-size:8px; letter-spacing:0.35em; text-transform:uppercase; color:var(--terracotta); }
+.form-group input, .form-group textarea, .form-group select {
+  background:var(--cream); border:1px solid rgba(201,160,85,0.2);
+  padding:13px 16px; font-family:'Jost',sans-serif; font-size:13px;
+  font-weight:300; color:var(--espresso); outline:none; transition:border-color 0.3s; cursor:pointer;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color:var(--gold); background:var(--white); }
+.form-group textarea { height:110px; resize:none; }
+.form-group select option { background:var(--cream); }
+.form-submit { background:var(--espresso); color:var(--cream); border:none; padding:16px 44px; font-family:'Jost',sans-serif; font-size:9px; letter-spacing:0.3em; text-transform:uppercase; font-weight:400; cursor:pointer; transition:all 0.35s; }
+.form-submit:hover { background:var(--gold); color:var(--espresso); }
+
+.success-box { display:none; background:rgba(122,158,130,0.1); border:1px solid rgba(122,158,130,0.3); padding:16px 20px; color:var(--sage); font-size:12px; letter-spacing:0.08em; text-align:center; margin-top:16px; }
+
+.contact-info { padding-top:8px; }
+.contact-info > p { font-size:14px; line-height:2; color:var(--text-muted); margin-bottom:44px; }
+
+.cinfo { display:flex; gap:16px; padding:18px 0; border-bottom:1px solid rgba(201,160,85,0.1); align-items:flex-start; }
+.cinfo-icon { font-size:18px; flex-shrink:0; margin-top:2px; }
+.cinfo strong { display:block; font-size:8px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
+.cinfo span { font-size:13px; color:var(--text-muted); }
+
+.whatsapp-cta {
+  display:inline-flex; align-items:center; gap:10px; margin-top:32px;
+  background:#25D366; color:#fff; padding:15px 32px;
+  font-size:10px; letter-spacing:0.2em; text-transform:uppercase;
+  text-decoration:none; font-family:'Jost',sans-serif; font-weight:400;
+  transition:all 0.3s;
+}
+.whatsapp-cta:hover { background:#1EB25A; transform:translateY(-2px); }
+
+/* ───── FOOTER ───── */
+footer {
+  background:var(--espresso); padding:56px;
+  border-top:3px solid var(--gold);
+}
+.footer-inner { max-width:1180px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px; }
+.footer-logo { font-family:'Playfair Display',serif; font-size:20px; font-weight:400; letter-spacing:0.3em; color:var(--cream); text-transform:uppercase; }
+.footer-logo span { color:var(--gold); }
+.footer-sub { font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(253,246,236,0.35); margin-top:5px; }
+.footer-links { display:flex; gap:32px; }
+.footer-links a { font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(253,246,236,0.4); text-decoration:none; transition:color 0.3s; }
+.footer-links a:hover { color:var(--gold); }
+.footer-copy { font-size:9px; color:rgba(253,246,236,0.25); letter-spacing:0.1em; }
+
+/* ───── FRAGRANCE PROFILE SECTION ───── */
+.frag { background:linear-gradient(160deg, var(--cream-deep) 0%, var(--cream) 100%); }
+.frag-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:rgba(201,160,85,0.1); margin-top:64px; }
+.frag-card { background:var(--white); padding:44px 32px; text-align:center; transition:all 0.4s; }
+.frag-card:hover { background:var(--espresso); }
+.frag-card:hover .frag-name { color:var(--gold-lt); }
+.frag-card:hover .frag-desc { color:rgba(253,246,236,0.6); }
+.frag-card:hover .frag-tag { color:rgba(253,246,236,0.4); border-color:rgba(201,160,85,0.2); }
+.frag-emoji { font-size:48px; margin-bottom:16px; display:block; transition:transform 0.4s; }
+.frag-card:hover .frag-emoji { transform:scale(1.1) rotate(5deg); }
+.frag-name { font-family:'Playfair Display',serif; font-size:22px; color:var(--espresso); margin-bottom:10px; transition:color 0.4s; }
+.frag-desc { font-size:11px; line-height:1.8; color:var(--text-muted); transition:color 0.4s; }
+.frag-tag { display:inline-block; margin-top:16px; font-size:7px; letter-spacing:0.3em; text-transform:uppercase; color:var(--text-muted); border:1px solid rgba(201,160,85,0.2); padding:4px 12px; transition:all 0.4s; }
+
+/* ───── RESPONSIVE ───── */
+@media(max-width:960px){
+  nav{padding:18px 24px;}
+  .nav-links,.nav-cta{display:none;}
+  .hero-content{margin-left:0;padding:0 24px;margin-top:100px;}
+  .hero-circle{display:none;}
+  .hero-trust{left:24px;gap:32px;}
+  section{padding:72px 0;}
+  .container{padding:0 24px;}
+  .scent-grid,.about-grid,.compliance-inner,.contact-grid{grid-template-columns:1fr;}
+  .products-grid{grid-template-columns:1fr;}
+  .ingredients-grid{grid-template-columns:1fr 1fr;}
+  .frag-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .footer-inner{flex-direction:column;gap:20px;text-align:center;}
+  .about-left,.about-right{padding:48px 32px;}
+  .products-intro{flex-direction:column;gap:20px;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Akoma <span>Luxe</span></a>
+  <ul class="nav-links">
+    <li><a href="#scent">Scent Story</a></li>
+    <li><a href="#products">Collection</a></li>
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#contact">Enquire</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Order Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-text">Akoma</div>
+  <div class="hero-botanical"></div>
+
+  <div class="hero-circle">
+    <div class="hero-circle-inner">
+      <span class="hero-circle-icon">🫧</span>
+      <div class="hero-circle-badge">Small Batch</div>
+      <div class="hero-circle-sub">Handcrafted in Ghana</div>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">Est. Accra 2026 &nbsp;·&nbsp; IFRA Certified</div>
+    <h1 class="hero-title">Pure<br>Ghana.<br><em>Crafted Rare.</em></h1>
+    <p class="hero-sub">Luxury handcrafted soaps born from Ghana's finest botanicals. Shea butter from the north. Moringa from the forest. Formulated for those who accept nothing less.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-warm">Explore the Collection</a>
+      <a href="#scent" class="btn-outline">The Scent Story</a>
+    </div>
+  </div>
+
+  <div class="hero-trust">
+    <div class="trust-item"><div class="trust-num">12</div><div class="trust-label">Bottle Batches Only</div></div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><div class="trust-num">100%</div><div class="trust-label">Ghanaian Botanicals</div></div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><div class="trust-num">8.1<small style="font-size:16px">%</small></div><div class="trust-label">Max IFRA Fragrance</div></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-band">
+  <div class="marquee-track">
+    <div class="marquee-item"><span>Shea Butter Ghana</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>IFRA Category 9 Certified</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Woody Amber Fragrance</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Cold Process Artisanal</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>No Synthetic Shortcuts</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Small Batch Luxury</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Shea Butter Ghana</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>IFRA Category 9 Certified</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Woody Amber Fragrance</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Cold Process Artisanal</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>No Synthetic Shortcuts</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Small Batch Luxury</span><div class="marquee-dot"></div></div>
+  </div>
+</div>
+
+<!-- SCENT STORY -->
+<section class="scent" id="scent">
+  <div class="container">
+    <div class="scent-grid">
+      <div class="scent-visual">
+        <div class="scent-wheel">
+          <div class="scent-wheel-inner">
+            <span class="icon">🌿</span>
+            <div class="label">Fragrance<br>Profile</div>
+          </div>
+        </div>
+        <div class="scent-notes">
+          <div class="note-row">
+            <div class="note-dot top"></div>
+            <span class="note-label">Top</span>
+            <span class="note-name">Citrus & Green Moringa</span>
+            <span class="note-desc">Fresh opening</span>
+          </div>
+          <div class="note-row">
+            <div class="note-dot heart"></div>
+            <span class="note-label">Heart</span>
+            <span class="note-name">Floral Amber</span>
+            <span class="note-desc">Warm & rich</span>
+          </div>
+          <div class="note-row">
+            <div class="note-dot base"></div>
+            <span class="note-label">Base</span>
+            <span class="note-name">Woody Amber & Teak</span>
+            <span class="note-desc">Deep & lasting</span>
+          </div>
+        </div>
+      </div>
+      <div class="scent-text">
+        <div class="sec-label">The Scent Story</div>
+        <h2 class="sec-title">Fragrance<br><em>as Identity</em></h2>
+        <div class="gold-line"></div>
+        <p>Every Akoma Luxe product carries a <strong>deliberately composed fragrance journey</strong> rooted in West African botanicals. Our signature scent opens with the brightness of citrus and fresh moringa leaf — a nod to the living greenery of Ghana's landscape.</p>
+        <p>At the heart, warm floral amber notes bloom — drawing from the rich resin traditions of the Sahel. The base settles into <strong>Teak Bamboo and Woody Amber</strong>, a grounding finish that lingers gently on the skin long after rinsing.</p>
+        <p>Our fragrance is formulated using the <strong>Michael Edwards Fragrance Wheel</strong> (Woody Amber family) and complies fully with IFRA standards for rinse-off products.</p>
+        <div class="ifra-badge">
+          <span class="check">✓</span>
+          IFRA Category 9 Certified — Max 8.1% Fragrance Load — Rinse-Off Safe
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="products-intro">
+      <div>
+        <div class="sec-label">The Collection</div>
+        <h2 class="sec-title">Crafted for<br><em>Refined Living</em></h2>
+      </div>
+      <a href="#contact" class="btn-outline">Enquire to Order →</a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-img">
+          <span class="product-chip">Signature</span>
+          <div class="product-emoji">🧴</div>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Signature Liquid Soap</h3>
+          <p class="product-desc">Shea butter and coconut oil in a silky hot-process formula. Frosted glass, gold pump. 250ml. IFRA-compliant fragrance at 3–5% load.</p>
+          <div class="product-footer">
+            <div class="product-price">GHS 150 <small>/bottle</small></div>
+            <button class="product-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">
+          <span class="product-chip">Artisanal</span>
+          <div class="product-emoji">🫧</div>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Artisanal Bar Soap</h3>
+          <p class="product-desc">Cold-process bar with kaolin clay, moringa leaf and shea. Letterpress kraft wrap, wax seal. 100g. Woody Amber scent.</p>
+          <div class="product-footer">
+            <div class="product-price">GHS 80 <small>/bar</small></div>
+            <button class="product-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">
+          <span class="product-chip">Corporate Gift</span>
+          <div class="product-emoji">🎁</div>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Luxe Gift Set</h3>
+          <p class="product-desc">2× Signature Liquid Soaps + 2× Artisanal Bars in a rigid gift box. Ribbon-tied. Perfect for corporate gifting and high-net-worth clients.</p>
+          <div class="product-footer">
+            <div class="product-price">GHS 500 <small>/set</small></div>
+            <button class="product-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INGREDIENTS -->
+<section class="ingredients">
+  <div class="container">
+    <div class="sec-label">The Botanicals</div>
+    <h2 class="sec-title">Ghana's Finest<br><em>Natural Ingredients</em></h2>
+    <div class="ingredients-grid">
+      <div class="ingr-card"><span class="ingr-icon">🫘</span><h3 class="ingr-name">Shea Butter</h3><p class="ingr-desc">Unrefined, raw shea from Brong-Ahafo. Vitamins A & E, deeply restorative.</p></div>
+      <div class="ingr-card"><span class="ingr-icon">🥥</span><h3 class="ingr-name">Coconut Oil</h3><p class="ingr-desc">Cold-pressed coastal coconuts. Creates an exceptionally dense, creamy lather.</p></div>
+      <div class="ingr-card"><span class="ingr-icon">🌿</span><h3 class="ingr-name">Moringa Leaf</h3><p class="ingr-desc">Ghana's miracle tree. Antioxidant-rich, skin-purifying, softening.</p></div>
+      <div class="ingr-card"><span class="ingr-icon">🌱</span><h3 class="ingr-name">Castor Oil</h3><p class="ingr-desc">Adds silk and conditioning. Boosts lather longevity. Velvet finish.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FRAGRANCE FAMILIES -->
+<section class="frag">
+  <div class="container">
+    <div class="sec-label">Scent Families</div>
+    <h2 class="sec-title">Our Three<br><em>Fragrance Characters</em></h2>
+    <div class="frag-grid">
+      <div class="frag-card">
+        <span class="frag-emoji">🌳</span>
+        <h3 class="frag-name">Woody Amber</h3>
+        <p class="frag-desc">Teak, bamboo and dry woods — our signature base. Warm, grounding, unmistakably African.</p>
+        <span class="frag-tag">Signature Scent</span>
+      </div>
+      <div class="frag-card">
+        <span class="frag-emoji">🌸</span>
+        <h3 class="frag-name">Soft Floral</h3>
+        <p class="frag-desc">Hibiscus heart notes, lightly powdered and delicate. Our feminine bar soap edition.</p>
+        <span class="frag-tag">Bar Soap — Limited</span>
+      </div>
+      <div class="frag-card">
+        <span class="frag-emoji">🍋</span>
+        <h3 class="frag-name">Fresh Citrus</h3>
+        <p class="frag-desc">Citrus opening with green moringa accord. Bright, invigorating, clean.</p>
+        <span class="frag-tag">Coming Soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-left container" style="max-width:600px;margin:0;padding-left:56px;">
+      <div class="sec-label">Who We Are</div>
+      <h2 class="sec-title">Born from<br><em>Ghana's Soil</em></h2>
+      <div class="gold-line"></div>
+      <p>Akoma Luxe was born from a simple belief: that <strong>Ghana's extraordinary botanicals deserve celebration at the highest level of luxury</strong>. We spend months perfecting small-batch formulas that honour this land.</p>
+      <p>We produce intentionally few products. Every bottle is hand-filled, hand-sealed, and hand-inspected. <strong>Akoma Luxe is not for everyone — it was never meant to be.</strong></p>
+      <div class="about-values">
+        <div class="val-item"><div class="val-num">01</div><div class="val-content"><strong>Intentionally Small</strong><span>12-bottle batches only. Exclusivity is our operating model.</span></div></div>
+        <div class="val-item"><div class="val-num">02</div><div class="val-content"><strong>Fully Traceable</strong><span>Every ingredient sourced within Ghana. Nothing hidden.</span></div></div>
+        <div class="val-item"><div class="val-num">03</div><div class="val-content"><strong>IFRA Compliant</strong><span>Fragrance safety certified for rinse-off products (Category 9).</span></div></div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="testimonial">
+        The most exquisite thing I have ever lathered onto my hands. The scent, the texture — it simply belongs in another category entirely.
+      </div>
+      <div class="testimonial-by">— Early Taster, Accra · Akoma Luxe Pre-Launch</div>
+      <div class="about-stats">
+        <div class="stat-box"><div class="n">100%</div><div class="l">Ghanaian Botanicals</div></div>
+        <div class="stat-box"><div class="n">8.1%</div><div class="l">Max IFRA Fragrance Load</div></div>
+        <div class="stat-box"><div class="n">0</div><div class="l">Synthetic Shortcuts</div></div>
+        <div class="stat-box"><div class="n">3</div><div class="l">Scent Families</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section class="compliance">
+  <div class="container">
+    <div class="compliance-inner">
+      <div>
+        <div class="sec-label">Safety & Standards</div>
+        <h2 class="sec-title">IFRA Compliant.<br><em>Professionally Made.</em></h2>
+        <div class="gold-line"></div>
+        <p style="font-size:14px;line-height:2;color:var(--text-muted);">Every Akoma Luxe product is formulated to meet the standards of the International Fragrance Association (IFRA). As rinse-off products, our liquid soap and bar soap fall under <strong>IFRA Category 9</strong>, with a maximum fragrance load of 8.1%. Our Teak Bamboo fragrance oil is certified compliant under the IFRA 47th Amendment, ensuring safety for all skin types.</p>
+      </div>
+      <div class="compliance-badges">
+        <div class="badge-card"><span class="badge-icon">✅</span><div><div class="badge-title">IFRA Category 9 — Rinse-Off</div><div class="badge-desc">Liquid soap and bar soap are certified safe for rinse-off skin contact per IFRA 2019 guidelines.</div></div></div>
+        <div class="badge-card"><span class="badge-icon">🌿</span><div><div class="badge-title">Max 8.1% Fragrance Load</div><div class="badge-desc">Teak Bamboo fragrance oil (SCENT-12907) tested at 8.1% max in Category 9 products.</div></div></div>
+        <div class="badge-card"><span class="badge-icon">🔬</span><div><div class="badge-title">RIFM Safety Assessed</div><div class="badge-desc">All fragrances assessed by RIFM Panel of Experts under IFRA 47th Amendment.</div></div></div>
+        <div class="badge-card"><span class="badge-icon">🇬🇭</span><div><div class="badge-title">100% Ghanaian Botanicals</div><div class="badge-desc">Every raw ingredient — shea, coconut oil, moringa — is sourced within Ghana.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="sec-label">Enquire</div>
+    <h2 class="sec-title" style="margin-bottom:56px;">Place an<br><em>Order or Enquiry</em></h2>
+    <div class="contact-grid">
+      <div>
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" id="fn" placeholder="Jeremiah"></div>
+          <div class="form-group"><label>Last Name</label><input type="text" id="ln" placeholder="Arthur"></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" id="em" placeholder="you@email.com"></div>
+        <div class="form-group">
+          <label>Product Interest</label>
+          <select id="pi">
+            <option value="">Select product or type of enquiry</option>
+            <option>Signature Liquid Soap — GHS 150</option>
+            <option>Artisanal Bar Soap — GHS 80</option>
+            <option>Luxe Gift Set — GHS 500</option>
+            <option>Corporate / Bulk Order</option>
+            <option>Hotel or Spa Partnership</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Your Message</label><textarea id="msg" placeholder="Tell us about your order, quantity, or how we can serve you..."></textarea></div>
+        <button class="form-submit" onclick="sendEnquiry()">Send Enquiry</button>
+        <div class="success-box" id="ok">✦ Thank you. Jeremiah will respond within 24 hours.</div>
+      </div>
+      <div class="contact-info">
+        <p>Akoma Luxe operates by appointment and enquiry. We do not sell through third-party retailers. Each order is confirmed personally by our founder, Jeremiah.</p>
+        <div class="cinfo"><span class="cinfo-icon">📍</span><div><strong>Based In</strong><span>Accra, Ghana</span></div></div>
+        <div class="cinfo"><span class="cinfo-icon">✉️</span><div><strong>Email</strong><span>hello@akomaluxe.com</span></div></div>
+        <div class="cinfo"><span class="cinfo-icon">🕐</span><div><strong>Response Time</strong><span>Within 24 hours</span></div></div>
+        <div class="cinfo"><span class="cinfo-icon">🌐</span><div><strong>Website</strong><span>www.akomaluxe.com</span></div></div>
+        <a href="https://wa.me/233000000000" class="whatsapp-cta">💬 &nbsp; Chat on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div><div class="footer-logo">Akoma <span>Luxe</span></div><div class="footer-sub">Pure Ghana. Crafted Rare.</div></div>
+    <div class="footer-links">
+      <a href="#scent">Scent Story</a>
+      <a href="#products">Collection</a>
+      <a href="#about">Our Story</a>
+      <a href="#contact">Enquire</a>
+    </div>
+    <div class="footer-copy">© 2026 Akoma Luxe · Accra, Ghana · IFRA Category 9 Certified</div>
+  </div>
+</footer>
+
+<script>
+  // Cursor
+  const cur = document.getElementById('cur');
+  const curRing = document.getElementById('curRing');
+  document.addEventListener('mousemove', e => {
+    cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
+    setTimeout(() => { curRing.style.left = e.clientX + 'px'; curRing.style.top = e.clientY + 'px'; }, 80);
+  });
+  document.querySelectorAll('a,button,.product-card,.ingr-card,.frag-card,.badge-card').forEach(el => {
+    el.addEventListener('mouseenter', () => { cur.style.transform = 'translate(-50%,-50%) scale(2.5)'; curRing.style.opacity = '1'; curRing.style.transform = 'translate(-50%,-50%) scale(1.5)'; });
+    el.addEventListener('mouseleave', () => { cur.style.transform = 'translate(-50%,-50%) scale(1)'; curRing.style.opacity = '0.7'; curRing.style.transform = 'translate(-50%,-50%) scale(1)'; });
+  });
+
+  // Form
+  function sendEnquiry() {
+    const fn = document.getElementById('fn').value;
+    const em = document.getElementById('em').value;
+    if (!fn || !em) { alert('Please enter your name and email.'); return; }
+    ['fn','ln','em','msg'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('pi').value = '';
+    document.getElementById('ok').style.display = 'block';
+  }
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.product-card,.ingr-card,.frag-card,.badge-card,.val-item,.note-row').forEach(el => {
+    el.style.opacity = '0'; el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
